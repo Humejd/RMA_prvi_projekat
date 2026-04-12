@@ -8,4 +8,15 @@
     <string name="ocjena_9_3">Ocjena: 9.3</string>
     <string name="opis_filma">Opis filma</string>
     <string name="todo">TODO</string>
+    <string name="naslov_filmaa">Naslov filma</string>
+    <string name="Zanr">Žanr</string>
+    <string name="ocjena">Ocjena</string>
+    <string name="Opis_filma">Opis filma</string>
+    <string name="glumci">Glumci</string>
+    <string name="glumac_1">Glumac 1</string>
+    <string name="glumac_2">Glumac 2</string>
+    <string name="glumac_3">Glumac 3</string>
+    <string name="glumac_4">Glumac 4</string>
+    <string name="glumac_5">Glumac 5</string>
+    <string name="slika_glumca">Slika glumca</string>
 </resources>

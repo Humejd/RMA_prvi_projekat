@@ -12,7 +12,7 @@
 
         <ImageView
             android:id="@+id/ivSlikaDetalji"
-            android:layout_width="match_parent"
+            android:layout_width="366dp"
             android:layout_height="344dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/todo"
@@ -43,6 +43,33 @@
             android:layout_marginTop="8dp"
             android:text="Ocjena"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvOcijeniFilm"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ocijeni film"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/ratingBarFilm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:numStars="10"
+            android:stepSize="0.5"
+            android:isIndicator="false"
+            android:transformPivotX="0dp" />
+
+        <TextView
+            android:id="@+id/tvTvojaOcjenaDetalji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Tvoja ocjena: Nije ocijenjen"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvOpisDetalji"

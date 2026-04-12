@@ -51,6 +51,14 @@
                 android:text="Ocjena"
                 android:textSize="20sp" />
 
+            <TextView
+                android:id="@+id/tvTvojaOcjena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Tvoja ocjena: Nije ocijenjen"
+                android:textSize="18sp" />
+
         </LinearLayout>
 
     </LinearLayout>

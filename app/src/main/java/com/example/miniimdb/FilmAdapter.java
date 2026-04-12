@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder> {
 
@@ -36,6 +37,12 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
         holder.tvZanr.setText("Žanr: " + film.getZanr());
         holder.tvOcjena.setText("Ocjena: " + film.getOcjena());
 
+        if (film.getTvojaOcjena() > 0) {
+            holder.tvTvojaOcjena.setText("Tvoja ocjena: " + String.format(Locale.US, "%.1f", film.getTvojaOcjena()));
+        } else {
+            holder.tvTvojaOcjena.setText("Tvoja ocjena: Nije ocijenjen");
+        }
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), DetaljiFilmaActivity.class);
             intent.putExtra("film", film);
@@ -51,7 +58,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
     public static class FilmViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivSlikaFilma;
-        TextView tvNaslov, tvZanr, tvOcjena;
+        TextView tvNaslov, tvZanr, tvOcjena, tvTvojaOcjena;
 
         public FilmViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +67,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             tvNaslov = itemView.findViewById(R.id.tvNaslov);
             tvZanr = itemView.findViewById(R.id.tvZanr);
             tvOcjena = itemView.findViewById(R.id.tvOcjena);
+            tvTvojaOcjena = itemView.findViewById(R.id.tvTvojaOcjena);
         }
     }
 }

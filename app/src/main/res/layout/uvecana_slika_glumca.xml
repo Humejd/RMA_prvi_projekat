@@ -9,6 +9,7 @@
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:adjustViewBounds="true"
+        android:contentDescription="Uvećana slika glumca"
         android:scaleType="fitCenter"
         android:src="@drawable/shaw" />
 

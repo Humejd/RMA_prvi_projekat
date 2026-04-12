@@ -212,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 glumciAvatar
         ));
 
+
         List<Glumac> glumciBatmanBegins = new ArrayList<>();
         glumciBatmanBegins.add(new Glumac(R.drawable.christian_bale, "Christian Bale"));
         glumciBatmanBegins.add(new Glumac(R.drawable.michael_caine, "Michael Caine"));
@@ -358,5 +359,22 @@ public class MainActivity extends AppCompatActivity {
 
         filmAdapter = new FilmAdapter(listaFilmova);
         rvFilmovi.setAdapter(filmAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (listaFilmova != null) {
+            for (Film film : listaFilmova) {
+                float ocjena = getSharedPreferences("OcjeneFilmova", MODE_PRIVATE)
+                        .getFloat(film.getNaslov(), 0.0f);
+                film.setTvojaOcjena(ocjena);
+            }
+
+            if (filmAdapter != null) {
+                filmAdapter.notifyDataSetChanged();
+            }
+        }
     }
 }
