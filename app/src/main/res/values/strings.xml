@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MiniIMDB</string>
+    <string name="naslov_filma">Naslov filma</string>
+    <string name="zanr_drama">Zanr: Drama</string>
+    <string name="ocjena_8_8">Ocjena: 8.8</string>
+    <string name="naslov_filma2">Naslov filma</string>
+    <string name="anr_drama">Žanr: Drama</string>
+    <string name="ocjena_9_3">Ocjena: 9.3</string>
+    <string name="opis_filma">Opis filma</string>
+    <string name="todo">TODO</string>
+</resources>
