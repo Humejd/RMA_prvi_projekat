@@ -1,5 +1,6 @@
 package com.example.miniimdb;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -75,7 +76,23 @@ public class DetaljiFilmaActivity extends AppCompatActivity {
 
                 ivGlumac5.setImageResource(film.getGlumci().get(4).getSlikaID());
                 tvGlumac5.setText(film.getGlumci().get(4).getImePrezime());
+
+                ivGlumac1.setOnClickListener(v -> prikaziUvecanuSliku(film.getGlumci().get(0).getSlikaID()));
+                ivGlumac2.setOnClickListener(v -> prikaziUvecanuSliku(film.getGlumci().get(1).getSlikaID()));
+                ivGlumac3.setOnClickListener(v -> prikaziUvecanuSliku(film.getGlumci().get(2).getSlikaID()));
+                ivGlumac4.setOnClickListener(v -> prikaziUvecanuSliku(film.getGlumci().get(3).getSlikaID()));
+                ivGlumac5.setOnClickListener(v -> prikaziUvecanuSliku(film.getGlumci().get(4).getSlikaID()));
             }
         }
+    }
+
+    private void prikaziUvecanuSliku(int slikaID) {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.uvecana_slika_glumca);
+
+        ImageView ivVelikaSlikaGlumca = dialog.findViewById(R.id.ivVelikaSlikaGlumca);
+        ivVelikaSlikaGlumca.setImageResource(slikaID);
+
+        dialog.show();
     }
 }
