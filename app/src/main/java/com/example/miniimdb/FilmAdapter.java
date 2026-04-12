@@ -10,15 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder> {
 
     private List<Film> listaFilmova;
+    private List<Film> listaFilmovaOriginal;
 
     public FilmAdapter(List<Film> listaFilmova) {
         this.listaFilmova = listaFilmova;
+        this.listaFilmovaOriginal = new ArrayList<>(listaFilmova);
     }
 
     @NonNull
@@ -53,6 +56,19 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
     @Override
     public int getItemCount() {
         return listaFilmova.size();
+    }
+
+    public void filter(String upit, String zanr) {
+        listaFilmova.clear();
+        for (Film film : listaFilmovaOriginal) {
+            boolean nazivOdgovara = upit.isEmpty() || film.getNaslov().toLowerCase().startsWith(upit.toLowerCase().trim());
+            boolean zanrOdgovara = zanr.equals("Svi žanrovi") || film.getZanr().equals(zanr);
+
+            if (nazivOdgovara && zanrOdgovara) {
+                listaFilmova.add(film);
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public static class FilmViewHolder extends RecyclerView.ViewHolder {

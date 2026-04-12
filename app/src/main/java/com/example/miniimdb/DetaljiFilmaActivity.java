@@ -49,7 +49,7 @@ public class DetaljiFilmaActivity extends AppCompatActivity {
         tvTvojaOcjenaDetalji = findViewById(R.id.tvTvojaOcjenaDetalji);
         ratingBarFilm = findViewById(R.id.ratingBarFilm);
 
-        // RatingBar fix - prikaz svih 10 zvjezdica
+
         ratingBarFilm.post(() -> {
             float scale = 0.8f;
             ratingBarFilm.setScaleX(scale);

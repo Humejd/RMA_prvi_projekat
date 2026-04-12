@@ -1,6 +1,11 @@
 package com.example.miniimdb;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.SearchView;
+import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +21,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rvFilmovi;
+    private SearchView searchView;
+    private Spinner spinnerZanr;
     private List<Film> listaFilmova;
     private FilmAdapter filmAdapter;
 
@@ -32,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         rvFilmovi = findViewById(R.id.rvFilmovi);
+        searchView = findViewById(R.id.searchView);
+        spinnerZanr = findViewById(R.id.spinnerZanr);
         rvFilmovi.setLayoutManager(new LinearLayoutManager(this));
 
         listaFilmova = new ArrayList<>();
@@ -212,7 +221,6 @@ public class MainActivity extends AppCompatActivity {
                 glumciAvatar
         ));
 
-
         List<Glumac> glumciBatmanBegins = new ArrayList<>();
         glumciBatmanBegins.add(new Glumac(R.drawable.christian_bale, "Christian Bale"));
         glumciBatmanBegins.add(new Glumac(R.drawable.michael_caine, "Michael Caine"));
@@ -359,6 +367,46 @@ public class MainActivity extends AppCompatActivity {
 
         filmAdapter = new FilmAdapter(listaFilmova);
         rvFilmovi.setAdapter(filmAdapter);
+
+        List<String> zanrovi = new ArrayList<>();
+        zanrovi.add("Svi žanrovi");
+        zanrovi.add("Drama");
+        zanrovi.add("Akcija");
+        zanrovi.add("Sci-Fi");
+        zanrovi.add("Triler");
+        zanrovi.add("Krimi");
+        zanrovi.add("Misterija");
+        zanrovi.add("Historijski");
+
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_dropdown_item, zanrovi);
+        spinnerZanr.setAdapter(spinnerAdapter);
+
+        spinnerZanr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String odabraniZanr = zanrovi.get(position);
+                String upit = searchView.getQuery().toString();
+                filmAdapter.filter(upit, odabraniZanr);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filmAdapter.filter(query, spinnerZanr.getSelectedItem().toString());
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filmAdapter.filter(newText, spinnerZanr.getSelectedItem().toString());
+                return false;
+            }
+        });
     }
 
     @Override
