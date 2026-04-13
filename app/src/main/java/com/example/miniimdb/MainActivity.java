@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Shawshank Redemption",
                 "Drama",
                 "9.3",
+                "1994",
+                "2h 22m",
                 "Priča o nadi, prijateljstvu i opstanku u zatvoru.",
                 glumciShawshank
         ));
@@ -79,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Pianist",
                 "Drama",
                 "8.5",
+                "2002",
+                "2h 30m",
                 "Priča o pijanisti koji pokušava preživjeti strahote Drugog svjetskog rata.",
                 glumciPianist
         ));
@@ -95,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Dark Knight",
                 "Akcija",
                 "9.0",
+                "2008",
+                "2h 32m",
                 "Batman se suočava s Jokerom koji unosi haos u Gotham.",
                 glumciDarkKnight
         ));
@@ -111,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 "Se7en",
                 "Triler",
                 "8.6",
+                "1995",
+                "2h 7m",
                 "Dvojica detektiva istražuju niz jezivih zločina povezanih sa sedam smrtnih grijeha.",
                 glumciSe7en
         ));
@@ -127,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
                 "Inception",
                 "Sci-Fi",
                 "8.8",
+                "2010",
+                "2h 28m",
                 "Tim ulazi u snove kako bi ubacio ideju u nečiji um.",
                 glumciInception
         ));
@@ -143,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Departed",
                 "Krimi",
                 "8.5",
+                "2006",
+                "2h 31m",
                 "Policajac i doušnik pokušavaju otkriti identitet jedan drugog unutar opasne kriminalne mreže.",
                 glumciDeparted
         ));
@@ -159,6 +171,8 @@ public class MainActivity extends AppCompatActivity {
                 "Forrest Gump",
                 "Drama",
                 "8.8",
+                "1994",
+                "2h 22m",
                 "Životna priča jednostavnog čovjeka kroz važne događaje.",
                 glumciForrest
         ));
@@ -175,6 +189,8 @@ public class MainActivity extends AppCompatActivity {
                 "Interstellar",
                 "Sci-Fi",
                 "8.7",
+                "2014",
+                "2h 49m",
                 "Putovanje kroz svemir u potrazi za novim domom čovječanstva.",
                 glumciInterstellar
         ));
@@ -191,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Matrix",
                 "Sci-Fi",
                 "8.7",
+                "1999",
+                "2h 16m",
                 "Haker otkriva pravu prirodu stvarnosti.",
                 glumciMatrix
         ));
@@ -207,6 +225,8 @@ public class MainActivity extends AppCompatActivity {
                 "Gladiator",
                 "Historijski",
                 "8.5",
+                "2000",
+                "2h 35m",
                 "Rimski general traži pravdu nakon izdaje.",
                 glumciGladiator
         ));
@@ -223,6 +243,8 @@ public class MainActivity extends AppCompatActivity {
                 "Avatar",
                 "Sci-Fi",
                 "7.8",
+                "2009",
+                "2h 42m",
                 "Čovjek ulazi u svijet Pandore i sukobljava se sa sopstvenom stranom.",
                 glumciAvatar
         ));
@@ -239,6 +261,8 @@ public class MainActivity extends AppCompatActivity {
                 "Batman Begins",
                 "Akcija",
                 "8.2",
+                "2005",
+                "2h 20m",
                 "Priča o nastanku Batmana i njegovoj borbi protiv kriminala u Gothamu.",
                 glumciBatmanBegins
         ));
@@ -255,6 +279,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Dark Knight Rises",
                 "Akcija",
                 "8.4",
+                "2012",
+                "2h 44m",
                 "Batman se vraća kako bi spasio Gotham od nove prijetnje.",
                 glumciDarkKnightRises
         ));
@@ -271,6 +297,8 @@ public class MainActivity extends AppCompatActivity {
                 "Catch Me If You Can",
                 "Krimi",
                 "8.1",
+                "2002",
+                "2h 21m",
                 "Mladi prevarant godinama izbjegava upornog FBI agenta.",
                 glumciCatchMe
         ));
@@ -287,6 +315,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Revenant",
                 "Drama",
                 "8.0",
+                "2015",
+                "2h 36m",
                 "Lovac na krzno kreće u brutalnu borbu za preživljavanje i osvetu.",
                 glumciRevenant
         ));
@@ -303,6 +333,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Bucket List",
                 "Drama",
                 "7.4",
+                "2007",
+                "1h 37m",
                 "Dvojica teško bolesnih muškaraca odlučuju ispuniti svoje životne želje.",
                 glumciBucketList
         ));
@@ -319,6 +351,8 @@ public class MainActivity extends AppCompatActivity {
                 "The Prestige",
                 "Misterija",
                 "8.5",
+                "2006",
+                "2h 10m",
                 "Rivalstvo dvojice mađioničara postaje opasna opsesija.",
                 glumciPrestige
         ));
@@ -335,6 +369,8 @@ public class MainActivity extends AppCompatActivity {
                 "Memento",
                 "Misterija",
                 "8.4",
+                "2000",
+                "1h 53m",
                 "Čovjek s gubitkom kratkotrajnog pamćenja pokušava otkriti istinu o ubistvu svoje supruge.",
                 glumciMemento
         ));
@@ -351,6 +387,8 @@ public class MainActivity extends AppCompatActivity {
                 "Shutter Island",
                 "Triler",
                 "8.2",
+                "2010",
+                "2h 18m",
                 "Istraga na izolovanom ostrvu otkriva mračnu istinu.",
                 glumciShutter
         ));
@@ -367,6 +405,8 @@ public class MainActivity extends AppCompatActivity {
                 "Joker",
                 "Drama",
                 "8.4",
+                "2019",
+                "2h 2m",
                 "Priča o psihološkom padu čovjeka odbačenog od društva.",
                 glumciJoker
         ));

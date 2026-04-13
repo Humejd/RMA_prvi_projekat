@@ -9,16 +9,20 @@ public class Film implements Serializable {
     private String naslov;
     private String zanr;
     private String ocjena;
+    private String godinaIzlaska;
+    private String trajanje;
     private String opis;
     private List<Glumac> glumci;
     private float tvojaOcjena;
     private boolean favorit;
 
-    public Film(int slikaID, String naslov, String zanr, String ocjena, String opis, List<Glumac> glumci) {
+    public Film(int slikaID, String naslov, String zanr, String ocjena, String godinaIzlaska, String trajanje, String opis, List<Glumac> glumci) {
         this.slikaID = slikaID;
         this.naslov = naslov;
         this.zanr = zanr;
         this.ocjena = ocjena;
+        this.godinaIzlaska = godinaIzlaska;
+        this.trajanje = trajanje;
         this.opis = opis;
         this.glumci = glumci;
         this.tvojaOcjena = 0.0f;
@@ -39,6 +43,14 @@ public class Film implements Serializable {
 
     public String getOcjena() {
         return ocjena;
+    }
+
+    public String getGodinaIzlaska() {
+        return godinaIzlaska;
+    }
+
+    public String getTrajanje() {
+        return trajanje;
     }
 
     public String getOpis() {

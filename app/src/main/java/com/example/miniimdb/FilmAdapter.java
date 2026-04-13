@@ -41,17 +41,25 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
         holder.tvNaslov.setText(film.getNaslov());
         holder.tvZanr.setText("Žanr: " + film.getZanr());
         holder.tvOcjena.setText("Ocjena: " + film.getOcjena());
+        holder.tvGodinaIzlaska.setText("Godina: " + film.getGodinaIzlaska());
+        holder.tvTrajanje.setText("Trajanje: " + film.getTrajanje());
 
-        if (film.getTvojaOcjena() > 0) {
-            holder.tvTvojaOcjena.setText("Tvoja ocjena: " + String.format(Locale.US, "%.1f", film.getTvojaOcjena()));
+        SharedPreferences ratingPreferences = holder.itemView.getContext()
+                .getSharedPreferences("OcjeneFilmova", android.content.Context.MODE_PRIVATE);
+
+        float sacuvanaOcjena = ratingPreferences.getFloat(film.getNaslov(), 0.0f);
+        film.setTvojaOcjena(sacuvanaOcjena);
+
+        if (sacuvanaOcjena > 0) {
+            holder.tvTvojaOcjena.setText("Tvoja ocjena: " + String.format(Locale.US, "%.1f", sacuvanaOcjena));
         } else {
             holder.tvTvojaOcjena.setText("Tvoja ocjena: Nije ocijenjen");
         }
 
-        SharedPreferences preferences = holder.itemView.getContext()
+        SharedPreferences favoritPreferences = holder.itemView.getContext()
                 .getSharedPreferences("FavoritiFilmova", android.content.Context.MODE_PRIVATE);
 
-        boolean jeFavorit = preferences.getBoolean(film.getNaslov(), false);
+        boolean jeFavorit = favoritPreferences.getBoolean(film.getNaslov(), false);
         film.setFavorit(jeFavorit);
 
         if (jeFavorit) {
@@ -61,9 +69,9 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
         }
 
         holder.btnFavorit.setOnClickListener(v -> {
-            boolean noviStatus = !preferences.getBoolean(film.getNaslov(), false);
+            boolean noviStatus = !favoritPreferences.getBoolean(film.getNaslov(), false);
 
-            SharedPreferences.Editor editor = preferences.edit();
+            SharedPreferences.Editor editor = favoritPreferences.edit();
             editor.putBoolean(film.getNaslov(), noviStatus);
             editor.apply();
 
@@ -105,7 +113,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
 
         ImageView ivSlikaFilma;
         ImageButton btnFavorit;
-        TextView tvNaslov, tvZanr, tvOcjena, tvTvojaOcjena;
+        TextView tvNaslov, tvZanr, tvOcjena, tvGodinaIzlaska, tvTrajanje, tvTvojaOcjena;
 
         public FilmViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -115,6 +123,8 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             tvNaslov = itemView.findViewById(R.id.tvNaslov);
             tvZanr = itemView.findViewById(R.id.tvZanr);
             tvOcjena = itemView.findViewById(R.id.tvOcjena);
+            tvGodinaIzlaska = itemView.findViewById(R.id.tvGodinaIzlaska);
+            tvTrajanje = itemView.findViewById(R.id.tvTrajanje);
             tvTvojaOcjena = itemView.findViewById(R.id.tvTvojaOcjena);
         }
     }
