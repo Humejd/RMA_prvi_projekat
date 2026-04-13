@@ -1,9 +1,11 @@
 package com.example.miniimdb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
@@ -23,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rvFilmovi;
     private SearchView searchView;
     private Spinner spinnerZanr;
-    private List<Film> listaFilmova;
+    private Button btnOtvoriFavorite;
+
+    public static List<Film> listaFilmova;
     private FilmAdapter filmAdapter;
 
     @Override
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         rvFilmovi = findViewById(R.id.rvFilmovi);
         searchView = findViewById(R.id.searchView);
         spinnerZanr = findViewById(R.id.spinnerZanr);
+        btnOtvoriFavorite = findViewById(R.id.btnOtvoriFavorite);
+
         rvFilmovi.setLayoutManager(new LinearLayoutManager(this));
 
         listaFilmova = new ArrayList<>();
@@ -368,6 +374,11 @@ public class MainActivity extends AppCompatActivity {
         filmAdapter = new FilmAdapter(listaFilmova);
         rvFilmovi.setAdapter(filmAdapter);
 
+        btnOtvoriFavorite.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FavoritiActivity.class);
+            startActivity(intent);
+        });
+
         List<String> zanrovi = new ArrayList<>();
         zanrovi.add("Svi žanrovi");
         zanrovi.add("Drama");
@@ -378,8 +389,12 @@ public class MainActivity extends AppCompatActivity {
         zanrovi.add("Misterija");
         zanrovi.add("Historijski");
 
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, zanrovi);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                zanrovi
+        );
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerZanr.setAdapter(spinnerAdapter);
 
         spinnerZanr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -391,19 +406,22 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                filmAdapter.filter(query, spinnerZanr.getSelectedItem().toString());
+                String odabraniZanr = spinnerZanr.getSelectedItem().toString();
+                filmAdapter.filter(query, odabraniZanr);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filmAdapter.filter(newText, spinnerZanr.getSelectedItem().toString());
+                String odabraniZanr = spinnerZanr.getSelectedItem().toString();
+                filmAdapter.filter(newText, odabraniZanr);
                 return false;
             }
         });
@@ -412,17 +430,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        if (listaFilmova != null) {
-            for (Film film : listaFilmova) {
-                float ocjena = getSharedPreferences("OcjeneFilmova", MODE_PRIVATE)
-                        .getFloat(film.getNaslov(), 0.0f);
-                film.setTvojaOcjena(ocjena);
-            }
-
-            if (filmAdapter != null) {
-                filmAdapter.notifyDataSetChanged();
-            }
+        if (filmAdapter != null) {
+            filmAdapter.notifyDataSetChanged();
         }
     }
 }

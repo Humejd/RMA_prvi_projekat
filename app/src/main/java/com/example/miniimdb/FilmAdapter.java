@@ -1,9 +1,11 @@
 package com.example.miniimdb;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +48,34 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             holder.tvTvojaOcjena.setText("Tvoja ocjena: Nije ocijenjen");
         }
 
+        SharedPreferences preferences = holder.itemView.getContext()
+                .getSharedPreferences("FavoritiFilmova", android.content.Context.MODE_PRIVATE);
+
+        boolean jeFavorit = preferences.getBoolean(film.getNaslov(), false);
+        film.setFavorit(jeFavorit);
+
+        if (jeFavorit) {
+            holder.btnFavorit.setImageResource(R.drawable.ic_star_filled);
+        } else {
+            holder.btnFavorit.setImageResource(R.drawable.ic_star_outline);
+        }
+
+        holder.btnFavorit.setOnClickListener(v -> {
+            boolean noviStatus = !preferences.getBoolean(film.getNaslov(), false);
+
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean(film.getNaslov(), noviStatus);
+            editor.apply();
+
+            film.setFavorit(noviStatus);
+
+            if (noviStatus) {
+                holder.btnFavorit.setImageResource(R.drawable.ic_star_filled);
+            } else {
+                holder.btnFavorit.setImageResource(R.drawable.ic_star_outline);
+            }
+        });
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), DetaljiFilmaActivity.class);
             intent.putExtra("film", film);
@@ -74,12 +104,14 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
     public static class FilmViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivSlikaFilma;
+        ImageButton btnFavorit;
         TextView tvNaslov, tvZanr, tvOcjena, tvTvojaOcjena;
 
         public FilmViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ivSlikaFilma = itemView.findViewById(R.id.ivSlikaFilma);
+            btnFavorit = itemView.findViewById(R.id.btnFavorit);
             tvNaslov = itemView.findViewById(R.id.tvNaslov);
             tvZanr = itemView.findViewById(R.id.tvZanr);
             tvOcjena = itemView.findViewById(R.id.tvOcjena);

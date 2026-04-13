@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class DetaljiFilmaActivity extends AppCompatActivity {
     private TextView tvOpisDetalji;
     private TextView tvTvojaOcjenaDetalji;
     private RatingBar ratingBarFilm;
+    private ImageButton btnFavoritDetalji;
 
     private ImageView ivGlumac1, ivGlumac2, ivGlumac3, ivGlumac4, ivGlumac5;
     private TextView tvGlumac1, tvGlumac2, tvGlumac3, tvGlumac4, tvGlumac5;
@@ -48,7 +50,7 @@ public class DetaljiFilmaActivity extends AppCompatActivity {
         tvOpisDetalji = findViewById(R.id.tvOpisDetalji);
         tvTvojaOcjenaDetalji = findViewById(R.id.tvTvojaOcjenaDetalji);
         ratingBarFilm = findViewById(R.id.ratingBarFilm);
-
+        btnFavoritDetalji = findViewById(R.id.btnFavoritDetalji);
 
         ratingBarFilm.post(() -> {
             float scale = 0.8f;
@@ -56,7 +58,7 @@ public class DetaljiFilmaActivity extends AppCompatActivity {
             ratingBarFilm.setScaleY(scale);
             ratingBarFilm.setPivotX(0f);
             ViewGroup.LayoutParams params = ratingBarFilm.getLayoutParams();
-            params.width = (int)(ratingBarFilm.getWidth() / scale);
+            params.width = (int) (ratingBarFilm.getWidth() / scale);
             ratingBarFilm.setLayoutParams(params);
         });
 
@@ -80,6 +82,32 @@ public class DetaljiFilmaActivity extends AppCompatActivity {
             tvZanrDetalji.setText("Žanr: " + film.getZanr());
             tvOcjenaDetalji.setText("Ocjena: " + film.getOcjena());
             tvOpisDetalji.setText(film.getOpis());
+
+            SharedPreferences favoritPreferences = getSharedPreferences("FavoritiFilmova", MODE_PRIVATE);
+            boolean jeFavorit = favoritPreferences.getBoolean(film.getNaslov(), false);
+            film.setFavorit(jeFavorit);
+
+            if (jeFavorit) {
+                btnFavoritDetalji.setImageResource(R.drawable.ic_star_filled);
+            } else {
+                btnFavoritDetalji.setImageResource(R.drawable.ic_star_outline);
+            }
+
+            btnFavoritDetalji.setOnClickListener(v -> {
+                boolean noviStatus = !favoritPreferences.getBoolean(film.getNaslov(), false);
+
+                SharedPreferences.Editor favoritEditor = favoritPreferences.edit();
+                favoritEditor.putBoolean(film.getNaslov(), noviStatus);
+                favoritEditor.apply();
+
+                film.setFavorit(noviStatus);
+
+                if (noviStatus) {
+                    btnFavoritDetalji.setImageResource(R.drawable.ic_star_filled);
+                } else {
+                    btnFavoritDetalji.setImageResource(R.drawable.ic_star_outline);
+                }
+            });
 
             SharedPreferences preferences = getSharedPreferences("OcjeneFilmova", MODE_PRIVATE);
             float sacuvanaOcjena = preferences.getFloat(film.getNaslov(), 0.0f);

@@ -12,6 +12,7 @@ public class Film implements Serializable {
     private String opis;
     private List<Glumac> glumci;
     private float tvojaOcjena;
+    private boolean favorit;
 
     public Film(int slikaID, String naslov, String zanr, String ocjena, String opis, List<Glumac> glumci) {
         this.slikaID = slikaID;
@@ -21,6 +22,7 @@ public class Film implements Serializable {
         this.opis = opis;
         this.glumci = glumci;
         this.tvojaOcjena = 0.0f;
+        this.favorit = false;
     }
 
     public int getSlikaID() {
@@ -53,5 +55,13 @@ public class Film implements Serializable {
 
     public void setTvojaOcjena(float tvojaOcjena) {
         this.tvojaOcjena = tvojaOcjena;
+    }
+
+    public boolean isFavorit() {
+        return favorit;
+    }
+
+    public void setFavorit(boolean favorit) {
+        this.favorit = favorit;
     }
 }

@@ -2,11 +2,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#000000"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -25,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Naslov filma"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -34,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Žanr"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <TextView
@@ -42,7 +46,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Ocjena"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/btnFavoritDetalji"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Favorit"
+            android:padding="4dp"
+            android:src="@drawable/ic_star_outline" />
 
         <TextView
             android:id="@+id/tvOcijeniFilm"
@@ -50,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Ocijeni film"
+            android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -58,12 +74,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:numStars="10"
-            android:stepSize="0.5"
             android:isIndicator="false"
-            android:transformPivotX="0dp"
+            android:numStars="10"
             android:progressTint="@android:color/holo_orange_light"
-            android:secondaryProgressTint="@android:color/holo_orange_light"/>
+            android:secondaryProgressTint="@android:color/holo_orange_light"
+            android:stepSize="0.5"
+            android:transformPivotX="0dp" />
 
         <TextView
             android:id="@+id/tvTvojaOcjenaDetalji"
@@ -71,6 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Tvoja ocjena: Nije ocijenjen"
+            android:textColor="#CCCCCC"
             android:textSize="18sp" />
 
         <TextView
@@ -79,6 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Opis filma"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <TextView
@@ -87,6 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Glumci"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -116,6 +135,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="Glumac 1"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -139,6 +159,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="Glumac 2"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -162,6 +183,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="Glumac 3"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -185,6 +207,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="Glumac 4"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -208,6 +231,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="Glumac 5"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
 
